@@ -3,15 +3,11 @@
 @import "panels/home.css";
 @import "panels/settings.css";
 
-* {
-    outline: none;
-}
-
 body {
     margin: 0;
     padding: 0;
     user-select: none;
-    background: linear-gradient(#00000066, #00000066), url("../images/background/light.jpg") black no-repeat center center scroll;
+    background: linear-gradient(#00000097, #00000097), url("../images/background/2023-07-05_18.32.08.png") black no-repeat center center scroll;
 }
 
 img {
@@ -57,7 +53,7 @@ img {
 }
 
 .icon-close:hover {
-    background: #e21212;
+    background: #02520d;
 }
 
 .icon-minimize:hover,
@@ -99,7 +95,7 @@ img {
     height: 16px;
     margin-left: 14px;
     margin-top: 12px;
-    background: #ffffff;
+    background:linear-gradient(to right, #0a5e15, #0cb41a);;
     border-radius: 50%;
     transform: translateX(0);
     animation: dot 2.8s infinite;
@@ -118,7 +114,7 @@ img {
     width: 16px;
     height: 16px;
     margin-left: 16px;
-    background: #ffffff;
+    background:linear-gradient(to right, #042909, #0a5e15);;
     border-radius: 50%;
 }
 
@@ -154,18 +150,4 @@ img {
     opacity: 1;
     z-index: 1;
     pointer-events: all;
-}
-
-.rotation {
-    animation: rotation 5s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(359deg);
-    }
 }

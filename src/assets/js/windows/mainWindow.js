@@ -1,28 +1,23 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 "use strict";
 const electron = require("electron");
 const path = require("path");
 const os = require("os");
 const pkg = require("../../../../package.json");
-let mainWindow = undefined;
+let updateWindow = undefined;
 
 function getWindow() {
-    return mainWindow;
+    return updateWindow;
 }
 
 function destroyWindow() {
-    if (!mainWindow) return;
-    mainWindow.close();
-    mainWindow = undefined;
+    if (!updateWindow) return;
+    updateWindow.close();
+    updateWindow = undefined;
 }
 
 function createWindow() {
     destroyWindow();
-    mainWindow = new electron.BrowserWindow({
+    updateWindow = new electron.BrowserWindow({
         title: pkg.preductname,
         width: 1280,
         height: 720,
@@ -39,11 +34,11 @@ function createWindow() {
         },
     });
     electron.Menu.setApplicationMenu(null);
-    mainWindow.setMenuBarVisibility(false);
-    mainWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'launcher.html'));
-    mainWindow.once('ready-to-show', () => {
-        if (mainWindow) {
-            mainWindow.show();
+    updateWindow.setMenuBarVisibility(false);
+    updateWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'launcher.html'));
+    updateWindow.once('ready-to-show', () => {
+        if (updateWindow) {
+            updateWindow.show();
         }
     });
 }

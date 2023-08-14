@@ -1,8 +1,3 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 import config from './utils/config.js';
 import database from './utils/database.js';
 import logger from './utils/logger.js';

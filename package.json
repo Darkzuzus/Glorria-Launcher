@@ -1,11 +1,11 @@
 {
-    "name": "Selvania-Launcher",
-    "preductname": "Selvania Launcher",
-    "version": "1.3.0",
-    "description": "Launcher Mincraft custom (crack, premium)",
+    "name": "Glorria-Launcher",
+    "preductname": "Glorria Launcher",
+    "version": "1.0.0",
+    "description": "Launcher Para Eventos De La Comunidad UwU",
     "main": "src/app.js",
-    "author": "Luuxis",
-    "url": "http://craftdium.ml/launcherSelvania",
+    "author": "Darkzuzu",
+    "url": "https://glorrio.000webhostapp.com/",
     "engines": {
         "node": "^18.x.x"
     },
@@ -34,6 +34,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/luuxis/Selvania-Launcher.git"
+        "url": "git+https://github.com/0NahSS/0Nah-Launcher.git"
     }
 }
