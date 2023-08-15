@@ -1,5 +1,5 @@
 /**
- * @author Luuxis
+ * @author Darkzuzu
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
@@ -22,9 +22,9 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "Je... vie...", "author": "Luuxis" },
-            { "message": "Salut je suis du code.", "author": "Luuxis" },
-            { "message": "Linux n' ai pas un os, mais un kernel.", "author": "Luuxis" }
+            { "message": "rejoin nous ...", "author": "Darkzuzu" },
+            { "message": "Crée en 2023.", "author": "Darkzuzu" },
+            { "message": "Glorria V.3.", "author": "Darkzuzu" }
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
