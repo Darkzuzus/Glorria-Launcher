@@ -1,9 +1,14 @@
+/**
+ * @author Luuxis
+ * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
+ */
+
 const pkg = require('../package.json');
 const fetch = require("node-fetch")
 let url = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url
 
 let config = `${url}/launcher/config-launcher/config.json`;
-let news = `${url}/launcher/news/news.json`;
+let news = `${url}/launcher/news-launchers/news.json`;
 
 class Config {
     GetConfig() {
