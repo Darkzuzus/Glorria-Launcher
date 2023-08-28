@@ -109,8 +109,8 @@
     border-radius: 15px;
     font: normal normal bold 30px/40px Poppins;
     color: #D1D1D1;
-    background-color: #303030;
-    box-shadow: 1px 2px 5px #585858;
+    background-color: #102915;
+    box-shadow: 1px 2px 5px #378862;
     margin: 20px 0;
     margin-bottom: 10px;
 }
@@ -194,7 +194,7 @@
 }
 
 .active-account:hover {
-    background:linear-gradient(to right, #ffa600c8, #ffd900a0);
+    background:linear-gradient(to right, #194419c8, #1c6835a0);
     border: 4px solid #1a9b2b;
     box-shadow: 0 0 5px #1a9b2b;
 }
@@ -247,7 +247,7 @@
 .slider-touch-left span:after,
 .slider-touch-right span:after {
     content: attr(value);
-    color: #042909;
+    color: #24612c;
     font: normal normal bold 12px/18px Poppins;
     white-space: nowrap;
     pointer-events: none;
