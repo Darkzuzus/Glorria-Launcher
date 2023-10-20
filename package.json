@@ -2,17 +2,10 @@
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
     "version": "1.0.0",
-<<<<<<< HEAD
     "description": "Launcher de Glorria V.3",
     "main": "src/app.js",
     "author": "Darkzuzu",
     "url": "https://glorria.000webhostapp.com/",
-=======
-    "description": "Launcher Para Eventos De La Comunidad UwU",
-    "main": "src/app.js",
-    "author": "Darkzuzu",
-    "url": "https://glorrio.000webhostapp.com/",
->>>>>>> f30ae77b2359643e48558ba1d10ed73b6bc6aea8
     "engines": {
         "node": "^18.x.x"
     },
@@ -41,10 +34,6 @@
     },
     "repository": {
         "type": "git",
-<<<<<<< HEAD
         "url": "git+https://github.com/Darkzuzus/Glorria-Launcher.git"
-=======
-        "url": "git+https://github.com/Darkzuzus/Glorria-Launcher"
->>>>>>> f30ae77b2359643e48558ba1d10ed73b6bc6aea8
     }
 }
