@@ -1,7 +1,7 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "1.0.1",
+    "version": "v10",
     "description": "Launcher de Glorria V.3",
     "main": "src/app.js",
     "author": "Darkzuzu",
