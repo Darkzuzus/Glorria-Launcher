@@ -1,6 +1,6 @@
 <p align="center"><img src="../src/assets/images/icon.png" width="65%" height="65%" alt="icon-launcher"></p>
 
-<h1 align="center">CapMine Launcher</h1>
+<h1 align="center">Glorria Launcher</h1>
 
 [<p align="center">
 <img src="https://img.shields.io/badge/build-bêta-orange.svg?style=social&logo=appveyor" alt="build">](https://github.com/luuxis/Selvania-Launcher/releases) 
