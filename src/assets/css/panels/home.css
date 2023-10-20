@@ -82,11 +82,19 @@
     height: 37px;
     border-radius: 20px;
     border: none;
+<<<<<<< HEAD
     background:radial-gradient(#0b4b13, #178025);
     font: normal normal bold 20px/25px Poppins;
     color: #0f2e18;
     margin: 15px 0;
     box-shadow: 0 0 5px #0e2e12;
+=======
+    background:radial-gradient(#02520d, #02520d);
+    font: normal normal bold 20px/25px Poppins;
+    color: #121212;
+    margin: 15px 0;
+    box-shadow: 0 0 5px #02520d;
+>>>>>>> f30ae77b2359643e48558ba1d10ed73b6bc6aea8
     transition: 1s;
 }
 

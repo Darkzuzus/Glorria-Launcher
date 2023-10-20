@@ -1,8 +1,3 @@
-/**
- * @author Luuxis
- * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
- */
-
 'use strict';
 
 import { database, changePanel, accountSelect, Slider } from '../utils.js';
@@ -19,6 +14,9 @@ class Settings {
         this.initTab();
         this.initAccount();
         this.initRam();
+        this.initJavaPath();
+        this.initJavaArgs();
+        this.initResolution();
         this.initLauncherSettings();
     }
 
