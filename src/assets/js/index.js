@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 /**
  * @author Darkzuzu
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
-=======
->>>>>>> f30ae77b2359643e48558ba1d10ed73b6bc6aea8
 'use strict';
 const { ipcRenderer } = require('electron');
 import { config } from './utils.js';
@@ -25,19 +22,10 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-<<<<<<< HEAD
             { "message": "rejoin nous ...", "author": "Darkzuzu" },
             { "message": "Crée en 2023.", "author": "Darkzuzu" },
             { "message": "🏰 Glorria V.3 🏰", "author": "Darkzuzu" }
         ]
-=======
-            { "message": "Depuis 2023", "author": "Darkzuzu" },
-            { "message": "Crée par Darkzuzu", "author": "Darkzuzu" },
-            { "message": "Made with ❤️", "author": "Darkzuzu" },
-            { "message": "📝", "author": "Darkzuzu"},
-       
-        ];
->>>>>>> f30ae77b2359643e48558ba1d10ed73b6bc6aea8
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
         this.splashAuthor.children[0].textContent = "@" + splash.author;
