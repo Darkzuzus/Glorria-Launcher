@@ -1,8 +1,8 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "1.0.7",
-    "description": "Launcher de Glorria V.3 rejoin vite l'aventure",
+    "version": "1.0.0",
+    "description": "Launcher de Glorria V.1.1 rejoin vite l'aventure",
     "main": "src/app.js",
     "author": "Darkzuzu",
     "url": "https://glorria.000webhostapp.com/",
