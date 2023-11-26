@@ -1,5 +1,5 @@
 /**
- * @author Darkzuzu
+ * @author Luuxis
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
@@ -22,9 +22,9 @@ class Splash {
 
     async startAnimation() {
         let splashes = [
-            { "message": "rejoin nous ...", "author": "Darkzuzu" },
-            { "message": "Crée en 2023.", "author": "Darkzuzu" },
-            { "message": "🏰 Glorria V.3 🏰", "author": "Darkzuzu" }
+            { "message": "Je... vie...", "author": "Luuxis" },
+            { "message": "Salut je suis du code.", "author": "Luuxis" },
+            { "message": "Linux n' ai pas un os, mais un kernel.", "author": "Luuxis" }
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
@@ -39,39 +39,44 @@ class Splash {
         this.splashAuthor.classList.add("opacity");
         this.message.classList.add("opacity");
         await sleep(1000);
-        this.maintenanceCheck();
+        this.checkUpdate();
+    }
+
+    async checkUpdate() {
+        if (dev) return this.startLauncher();
+        this.setStatus(`recherche de mise à jour...`);
+
+        ipcRenderer.invoke('update-app').then(err => {
+            if (err.error) {
+                let error = err.message;
+                this.shutdown(`erreur lors de la recherche de mise à jour :<br>${error}`);
+            }
+        })
+
+        ipcRenderer.on('updateAvailable', () => {
+            this.setStatus(`Mise à jour disponible !`);
+            this.toggleProgress();
+            ipcRenderer.send('start-update');
+        })
+
+        ipcRenderer.on('download-progress', (event, progress) => {
+            this.setProgress(progress.transferred, progress.total);
+        })
+
+        ipcRenderer.on('update-not-available', () => {
+            this.maintenanceCheck();
+        })
     }
 
     async maintenanceCheck() {
-        if (dev) return this.startLauncher();
         config.GetConfig().then(res => {
-            if (res.maintenance) return this.setStatus(res.maintenance_message);
-            else this.checkUpdate();
+            if (res.maintenance) return this.shutdown(res.maintenance_message);
+            this.startLauncher();
         }).catch(e => {
             console.error(e);
             return this.shutdown("Aucune connexion internet détectée,<br>veuillez réessayer ultérieurement.");
         })
     }
-
-    async checkUpdate() {
-        this.setStatus(`Recherche de mise à jour...`);
-        ipcRenderer.send('update-app');
-
-        ipcRenderer.on('updateAvailable', () => {
-            this.setStatus(`Mise à jour en cours...`);
-            this.toggleProgress();
-        })
-
-        ipcRenderer.on('download-progress', (event, progress) => {
-            console.log(progress);
-            this.setProgress(progress.transferred, progress.total);
-        })
-
-        ipcRenderer.on('update-not-available', () => {
-            this.startLauncher();
-        })
-    }
-
 
     startLauncher() {
         this.setStatus(`Démarrage du launcher`);
