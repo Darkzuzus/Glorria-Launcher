@@ -2,16 +2,17 @@
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
     "version": "1.0.0",
-    "description": "Launcher de Glorria V.1.1 rejoin vite l'aventure",
+    "description": "Launcher Para Eventos De La Comunidad UwU",
     "main": "src/app.js",
     "author": "Darkzuzu",
-    "url": "https://glorria.000webhostapp.com/",
+    "url": "https://glorrio.000webhostapp.com/",
     "engines": {
         "node": "^18.x.x"
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
         "build": "node build.js --build",
+        "icon": "node build.js --icon=https://glorrio.000webhostapp.com/icon.png",
         "dev": "nodemon --exec npm start"
     },
     "license": "CC0",
@@ -21,7 +22,7 @@
     "dependencies": {
         "electron-updater": "^5.0.1",
         "jimp": "^0.22.8",
-        "minecraft-java-core": "3.7",
+        "minecraft-java-core": "^3.5.0",
         "node-fetch": "^2.6.7",
         "png2icons": "^2.0.1"
     },
@@ -33,6 +34,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Darkzuzus/Glorria-Launcher.git"
+        "url": "git+https://github.com/Darkzuzus/Glorria-Launcher"
     }
 }

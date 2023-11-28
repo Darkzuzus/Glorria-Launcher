@@ -9,8 +9,6 @@
     display: flex;
 }
 
-
-
 .player-head {
     margin: auto 30px;
     background-size: cover;
@@ -82,11 +80,11 @@
     height: 37px;
     border-radius: 20px;
     border: none;
-    background:radial-gradient(#0b4b13, #178025);
+    background:radial-gradient(#02520d, #02520d);
     font: normal normal bold 20px/25px Poppins;
-    color: #0f2e18;
+    color: #121212;
     margin: 15px 0;
-    box-shadow: 0 0 5px #0e2e12;
+    box-shadow: 0 0 5px #02520d;
     transition: 1s;
 }
 
@@ -158,7 +156,7 @@
     left: 0px;
     width: 100%;
     height: 87px;
-    background-color: #0e2515;
+    background-color: #292929;
     border-radius: 10px 10px 0px 0px;
     transition: color .2s, filter .2s;
 }
@@ -284,11 +282,11 @@
 }
 
 .green {
-    color: #19850d;
+    color: #1AC707;
 }
 
 .red {
-    color: #7c0808;
+    color: #042b09;
 }
 
 .etat-text {
@@ -322,9 +320,9 @@
     border-radius: 10px;
     border: 2px solid #1A1A1A;
     transition: all .2s;
-    background-color: #19850d;
+    background-color: #1AC707;
 }
 
 .online.off {
-    background-color: #7c0808;
+    background-color: #071d0a;
 }
