@@ -20,7 +20,7 @@ class Splash {
             { "message": "Depuis 2023", "author": "Darkzuzu" },
             { "message": "Crée par Darkzuzu", "author": "Darkzuzu" },
             { "message": "Made with ❤️", "author": "Darkzuzu" },
-            { "message": "📝", "author": "Darkzuzu"},
+            { "message": "📝 Glorria", "author": "Darkzuzu"},
        
         ];
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
