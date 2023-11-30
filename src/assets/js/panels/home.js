@@ -1,3 +1,8 @@
+/**
+ * @author Luuxis
+ * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
+ */
+
 'use strict';
 
 import { logger, database, changePanel } from '../utils.js';
@@ -21,7 +26,7 @@ class Home {
         this.initBtn();
     }
 
-    initNews() {
+    async initNews() {
         let news = document.querySelector('.news-list');
         if (this.news) {
             if (!this.news.length) {
@@ -41,7 +46,7 @@ class Home {
                 news.appendChild(blockNews);
             } else {
                 for (let News of this.news) {
-                    let date = this.getdate(News.publish_date)
+                    let date = await this.getdate(News.publish_date)
                     let blockNews = document.createElement('div');
                     blockNews.classList.add('news-block');
                     blockNews.innerHTML = `
@@ -77,21 +82,18 @@ class Home {
                         <p>Impossible de contacter le serveur des news.</br>Merci de vérifier votre configuration.</p>
                     </div>
                 </div>`
-            // news.appendChild(blockNews);
+            news.appendChild(blockNews);
         }
     }
 
     async initLaunch() {
-        document.querySelector('.play-btn').addEventListener('click', async() => {
+        document.querySelector('.play-btn').addEventListener('click', async () => {
             let urlpkg = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url;
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
             let ram = (await this.database.get('1234', 'ram')).value;
-            let javaPath = (await this.database.get('1234', 'java-path')).value;
-            let javaArgs = (await this.database.get('1234', 'java-args')).value;
             let Resolution = (await this.database.get('1234', 'screen')).value;
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
-            let screen;
 
             let playBtn = document.querySelector('.play-btn');
             let info = document.querySelector(".text-download")
@@ -109,16 +111,26 @@ class Home {
             let opts = {
                 url: this.config.game_url === "" || this.config.game_url === undefined ? `${urlpkg}/files` : this.config.game_url,
                 authenticator: account,
+                timeout: 10000,
                 path: `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`,
                 version: this.config.game_version,
                 detached: launcherSettings.launcher.close === 'close-all' ? false : true,
-                java: this.config.java,
-                javapath: javaPath.path,
-                args: [...javaArgs.args, ...this.config.game_args],
-                screen,
-                modde: this.config.modde,
+                downloadFileMultiple: 30,
+
+                loader: {
+                    type: this.config.loader.type,
+                    build: this.config.loader.build,
+                    enable: this.config.loader.enable,
+                },
+
+                JVM_ARGS: [...this.config.jvm_args],
+                GAME_ARGS: [...this.config.game_args],
+
                 verify: this.config.verify,
-                ignored: this.config.ignored,
+                ignored: ['loader', ...this.config.ignored],
+
+                java: true,
+
                 memory: {
                     min: `${ram.ramMin * 1024}M`,
                     max: `${ram.ramMax * 1024}M`
@@ -129,42 +141,63 @@ class Home {
             info.style.display = "block"
             launch.Launch(opts);
 
-            launch.on('progress', (DL, totDL) => {
+            launch.on('extract', extract => {
+                console.log(extract);
+            });
+
+            launch.on('progress', (progress, size) => {
                 progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Téléchargement ${((DL / totDL) * 100).toFixed(0)}%`
-                progressBar.value = DL;
-                progressBar.max = totDL;
+                document.querySelector(".text-download").innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
+                ipcRenderer.send('main-window-progress', { progress, size })
+                progressBar.value = progress;
+                progressBar.max = size;
+            });
+
+            launch.on('check', (progress, size) => {
+                progressBar.style.display = "block"
+                document.querySelector(".text-download").innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
+                progressBar.value = progress;
+                progressBar.max = size;
+            });
+
+            launch.on('estimated', (time) => {
+                let hours = Math.floor(time / 3600);
+                let minutes = Math.floor((time - hours * 3600) / 60);
+                let seconds = Math.floor(time - hours * 3600 - minutes * 60);
+                console.log(`${hours}h ${minutes}m ${seconds}s`);
             })
 
             launch.on('speed', (speed) => {
                 console.log(`${(speed / 1067008).toFixed(2)} Mb/s`)
             })
 
-            launch.on('check', (e) => {
-                progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Vérification ${((DL / totDL) * 100).toFixed(0)}%`
-                progressBar.value = DL;
-                progressBar.max = totDL;
-
-            })
+            launch.on('patch', patch => {
+                console.log(patch);
+                info.innerHTML = `Patch en cours...`
+            });
 
             launch.on('data', (e) => {
                 new logger('Minecraft', '#36b030');
-                if(launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
+                if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
+                ipcRenderer.send('main-window-progress-reset')
                 progressBar.style.display = "none"
                 info.innerHTML = `Demarrage en cours...`
                 console.log(e);
             })
 
-            launch.on('close', () => {
-                if(launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
+            launch.on('close', code => {
+                if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
                 progressBar.style.display = "none"
                 info.style.display = "none"
                 playBtn.style.display = "block"
                 info.innerHTML = `Vérification`
                 new logger('Launcher', '#7289da');
                 console.log('Close');
-            })
+            });
+
+            launch.on('error', err => {
+                console.log(err);
+            });
         })
     }
 
@@ -181,7 +214,7 @@ class Home {
             online.classList.toggle("off");
             playersConnected.textContent = serverPing.playersConnect;
         } else if (serverPing.error) {
-            nameServer.textContent = 'Serveur Hors-Ligne';
+            nameServer.textContent = 'Serveur indisponible';
             serverMs.innerHTML = `<span class="red">Hors ligne</span>`;
         }
     }
@@ -192,7 +225,7 @@ class Home {
         });
     }
 
-    getdate(e) {
+    async getdate(e) {
         let date = new Date(e)
         let year = date.getFullYear()
         let month = date.getMonth() + 1
