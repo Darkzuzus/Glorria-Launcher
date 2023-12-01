@@ -2,6 +2,9 @@
 node_modules
 app
 test
+package-lock.json
 dist
 node-v*
 AppData
+node_modules
+.DS_STORE

@@ -7,7 +7,7 @@ body {
     margin: 0;
     padding: 0;
     user-select: none;
-    background: linear-gradient(#00000097, #00000097), url("../images/background/PAIN.png") black no-repeat center center scroll;
+    background: linear-gradient(#00000097, #00000097), url("../images/background/ligth.png") black no-repeat center center scroll;
 }
 
 img {
@@ -59,7 +59,7 @@ img {
 .icon-minimize:hover,
 .icon-restore-down:hover,
 .icon-maximize:hover {
-    background-color: #0000009d;
+    background-color: #4b835d9d;
 }
 
 .icon-close:before,

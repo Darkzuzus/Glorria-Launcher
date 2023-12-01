@@ -194,7 +194,7 @@
 }
 
 .active-account:hover {
-    background:linear-gradient(to right, #02520d, #0d6819);
+    background:linear-gradient(to right, #0d6419, #02520d);
     border: 4px solid #1a9b2b;
     box-shadow: 0 0 5px #1a9b2b;
 }
