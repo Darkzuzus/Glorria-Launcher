@@ -1,13 +1,13 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "1.0.3",
-    "description": "Launcher Para Eventos De La Comunidad UwU",
+    "version": "1.0.4",
+    "description": "Launcher de glorria V.1.1",
     "main": "src/app.js",
     "author": "Darkzuzu",
     "url": "https://glorria.000webhostapp.com/",
     "engines": {
-        "node": "^18.x.x"
+        "node": "^17.x.x"
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
