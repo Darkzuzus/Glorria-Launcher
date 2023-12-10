@@ -15,30 +15,27 @@
     width: 160px;
     height: 37px;
     margin: auto 30px;
-    background:linear-gradient(to right, #02520d, #042909);
-    border:linear-gradient(to right, #02520d, #042909);
+    background: #0eca2d;
+    border: 4px solid #0eca2d;
     font: normal normal bold 20px/25px Poppins;
     cursor: pointer;
-    box-shadow: 0 5 5px #02520d;
     outline: none;
 }
 
 .tab-btn-css:hover {
-    background:linear-gradient(to right, #02520d, #042909);
-    box-shadow: 0 0 5px #12661e;
-    border: 4px solid #0e851e;
+    background: #006e21;
+    border: 4px solid #006e21;
 }
 
+
 .active-tab-btn {
-    background: linear-gradient(to right, #02520d, #042909);
-    border: 4px solid #02520d;
-    box-shadow: 0 0 5px #02520d;
+    background: #006e21;
+    border: 4px solid #ffffff;
 }
 
 .active-tab-btn:hover {
-    background: linear-gradient(to right, #0e851e, #0e851e);;
-    border: 4px solid #06270b;
-    box-shadow: 0 0 5px #0e851e;
+    background: #006e21;
+    border: 4px solid #ffffff;
 }
 
 .tabs-settings-content {
@@ -110,9 +107,9 @@
     font: normal normal bold 30px/40px Poppins;
     color: #D1D1D1;
     background-color: #303030;
-    box-shadow: 1px 2px 5px #585858;
     margin: 20px 0;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .accounts {
@@ -122,21 +119,21 @@
 
 .account {
     display: inline-block;
-    background:radial-gradient(#00f308, #84ff00);
-    box-shadow: 0 0 5px #2c2c2c;
-    border: 4px solid #343434;
+    background: #096b19;
+    border: 4px solid #0c631a;
     font: normal normal bold 30px/40px Poppins;
     width: 500px;
     height: 100px;
     margin: 1% 2%;
     border-radius: 100px;
     text-align: start;
+    transition-duration: 0.4s;
 }
 
 .account:hover {
-    background: linear-gradient(to right, #2bb63d, #51ff00);
-    box-shadow: 0 0 5px #0e851e;
-    border: 4px solid #0e851e;
+    background: #04460f;
+    border: 4px solid ;
+    transition-duration: 0.4s;
 }
 
 .account-image {
@@ -170,10 +167,9 @@
 
 .account-delete {
     margin: -60px 415px;
-    color: #1a9b2b;
+    color: #f73434;
     font-size: 50px;
     background: #353535c7;
-    box-shadow: 0 0 5px #353535c7;
     width: 65px;
     height: 65px;
     border-radius: 100%;
@@ -188,15 +184,13 @@
 }
 
 .active-account {
-    background:linear-gradient(to right, #02520d, #042909);
-    border: 4px solid #1a9b2b;
-    box-shadow: 0 0 5px #1a9b2b;
+    background: #006e21;
+    border: 4px solid #ffffff;
 }
 
 .active-account:hover {
-    background:linear-gradient(to right, #0d6419, #02520d);
-    border: 4px solid #1a9b2b;
-    box-shadow: 0 0 5px #1a9b2b;
+    background: #006e21;
+    border: 4px solid #ffffff;
 }
 
 
@@ -238,7 +232,7 @@
     width: 20px;
     height: 10px;
     background: #F1F1F1;
-    border: 4px solid #042909;
+    border: 4px solid #065f15;
     transition: background-color .2s, border .2s;
     border-radius: 18px;
     cursor: pointer;
@@ -247,7 +241,7 @@
 .slider-touch-left span:after,
 .slider-touch-right span:after {
     content: attr(value);
-    color: #042909;
+    color: #065f15;
     font: normal normal bold 12px/18px Poppins;
     white-space: nowrap;
     pointer-events: none;
@@ -275,7 +269,7 @@
     display: block;
     height: 100%;
     width: 0%;
-    background:radial-gradient(#042909, #0a5e15);
+    background: #065f15;
     transition: background-color .2s;
 }
 
@@ -305,7 +299,7 @@
     font: normal normal bold 13px/20px Poppins;
     border-radius: 18px;
     padding: 8px 30px;
-    background:radial-gradient(#042909, #0a5e15);
+    background-color: #065f15;
     cursor: pointer;
     margin-left: 20px;
     transition: color .2s, background-color .2s;
@@ -321,7 +315,7 @@
     font: normal normal bold 13px/20px Poppins;
     border-radius: 18px;
     padding: 8px 30px;
-    background:radial-gradient(#042909, #0a5e15);
+    background-color: #065f15;
     cursor: pointer;
     margin-left: 20px;
     transition: color .2s, background-color .2s;
@@ -421,7 +415,7 @@
 
 .select {
     border-radius: 40px;
-    background:radial-gradient(#042909, #0a5e15);
+    background-color: #065f15;
     font: normal normal normal 12px/18px Poppins;
     transition: color .2s, box-shadow .2s;
     border: none;
@@ -462,7 +456,7 @@
 }
 
 .checkbox-settings:checked+label {
-    background:linear-gradient(to right, #02520d, #042909);;
+    background-color: #065f15;
 }
 
 .checkround {
@@ -472,4 +466,54 @@
 .checkbox-settings+label {
     display: inline-block;
     margin-right: 8px;
+}
+
+.active-account {
+    background: #065f15;
+    border: 4px solid #ffffff;
+    color: #ffffff;
+}
+
+.active-account:hover {
+    background: #04460f;
+}
+
+/* boutons */
+/* actif */
+.tab-btn-css.tab-btn.active-tab-btn {
+    border-radius: 8px;
+    border: none;
+    background-color: #04460f;
+    color: #e4e4e4;
+    font: normal normal bold 19px/29px Poppins;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+/* pas actif */
+.tab-btn-css.tab-btn {
+    border-radius: 8px;
+    border: none;
+    background-color: #065f15;
+    color: #e4e4e4;
+    font: normal normal bold 19px/29px Poppins;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+/* sauvegarde btn */
+
+.save-tabs-btn {
+    background: #ffffff;
+    border: 4px solid #ffffff;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+}
+
+.save-tabs-btn:hover {
+    background: #b8b8b8;
+    border: 4px solid #b8b8b8;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 8px;
 }
