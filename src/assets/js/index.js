@@ -24,7 +24,7 @@ class Splash {
         let splashes = [
             { "message": "rejoin nous ...", "author": "Darkzuzu" },
             { "message": "Crée en 2023.", "author": "Darkzuzu" },
-            { "message": "🏰 Glorria V.3 🏰", "author": "Darkzuzu" }
+            { "message": "🏰 Glorria V.1.1 🏰", "author": "Darkzuzu" }
         ]
         let splash = splashes[Math.floor(Math.random() * splashes.length)];
         this.splashMessage.textContent = splash.message;
