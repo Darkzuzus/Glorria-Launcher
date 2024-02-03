@@ -5,7 +5,7 @@
 
 'use strict';
 
-import { logger, database, changePanel } from '../utils.js';
+import { logger, database, changePanel} from '../utils.js';
 
 const { Launch, Status } = require('minecraft-java-core');
 const { ipcRenderer } = require('electron');
@@ -17,13 +17,14 @@ const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? `${
 class Home {
     static id = "home";
     async init(config, news) {
+        this.database = await new database().init();
         this.config = config
         this.news = await news
-        this.database = await new database().init();
         this.initNews();
         this.initLaunch();
         this.initStatusServer();
         this.initBtn();
+        this.bkgrole();
     }
 
     async initNews() {
@@ -61,8 +62,8 @@ class Home {
                         </div>
                         <div class="news-content">
                             <div class="bbWrapper">
-                                <p>${News.content.replace(/\n/g, '</br>')}</p>
-                                <p class="news-author">Auteur,<span> ${News.author}</span></p>
+                                <p>${News.content}</p>
+                                <p class="news-author"><span> ${News.author}</span></p>
                             </div>
                         </div>`
                     news.appendChild(blockNews);
@@ -84,6 +85,92 @@ class Home {
                 </div>`
             // news.appendChild(blockNews);
         }
+        let title_changelog = document.createElement("div");
+        title_changelog.innerHTML = `
+        <div>${this.config.changelog_version}</div>
+        `
+        document.querySelector('.title-change').appendChild(title_changelog);
+        if(!this.config.changelog_version) {
+            document.querySelector(".title-change").style.display = "none";
+        }
+
+        let bbWrapperChange = document.createElement("div");
+        bbWrapperChange.innerHTML = `
+        <div>${this.config.changelog_new}</div>
+        `
+        document.querySelector('.bbWrapperChange').appendChild(bbWrapperChange);
+        if(!this.config.changelog_new) {
+            document.querySelector(".bbWrapperChange").style.display = "none";
+        }
+        let serverimg = document.querySelector('.server-img')
+        serverimg.setAttribute("src", `${this.config.server_img}`)
+        if(!this.config.server_img) {
+            serverimg.style.display = "none";
+        }
+    }
+    
+    async bkgrole () {
+        let uuid = (await this.database.get('1234', 'accounts-selected')).value;
+        let account = (await this.database.get(uuid.selected, 'accounts')).value;
+        
+        let blockRole = document.createElement("div");
+        if (this.config.role === true && account.user_info.role) {
+
+        blockRole.innerHTML = `
+        <div>Grade: ${account.user_info.role.name}</div>
+        `
+        document.querySelector('.player-role').appendChild(blockRole);
+        }
+        if(!account.user_info.role) {
+            document.querySelector(".player-role").style.display = "none";
+        }
+
+
+        let blockMonnaie = document.createElement("div");
+        if (this.config.money === true) {
+        blockMonnaie.innerHTML = `
+        <div>${account.user_info.monnaie} Crédits</div>
+        `
+        document.querySelector('.player-monnaie').appendChild(blockMonnaie);
+        }
+        if(account.user_info.monnaie === "undefined") {
+            document.querySelector(".player-monnaie").style.display = "none";
+        }
+        if (this.config.whitelist_activate === true) {
+        if (!this.config.whitelist.includes(account.name)) {
+            document.querySelector(".play-btn").style.backgroundColor = "#696969"; // Couleur de fond grise
+            document.querySelector(".play-btn").style.pointerEvents = "none"; // Désactiver les événements de souris
+            document.querySelector(".play-btn").style.boxShadow = "none";
+            document.querySelector(".play-btn").textContent = "Indisponible";        
+        }
+    }
+        
+        if (account.user_info.role.name === this.config.role_data.role1.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role1.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role2.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role2.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role3.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role3.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role4.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role4.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role5.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role5.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role6.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role6.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role7.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role7.background}) black no-repeat center center scroll`;
+        }
+        if (account.user_info.role.name === this.config.role_data.role8.name) {
+            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role8.background}) black no-repeat center center scroll`;
+        }
+        
+       
     }
 
     async initLaunch() {
@@ -92,8 +179,11 @@ class Home {
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
             let ram = (await this.database.get('1234', 'ram')).value;
+            let javaPath = (await this.database.get('1234', 'java-path')).value;
+            let javaArgs = (await this.database.get('1234', 'java-args')).value;
             let Resolution = (await this.database.get('1234', 'screen')).value;
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
+            let screen;
 
             let playBtn = document.querySelector('.play-btn');
             let info = document.querySelector(".text-download")
@@ -109,25 +199,22 @@ class Home {
             }
 
             let opts = {
-                url: this.config.game_url === "" || this.config.game_url === undefined ? `${urlpkg}/files` : this.config.game_url,
+                url: `${pkg.settings}/data`,
                 authenticator: account,
                 timeout: 10000,
                 path: `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`,
                 version: this.config.game_version,
                 detached: launcherSettings.launcher.close === 'close-all' ? false : true,
                 downloadFileMultiple: 30,
-
                 loader: {
                     type: this.config.loader.type,
                     build: this.config.loader.build,
                     enable: this.config.loader.enable,
                 },
-
                 verify: this.config.verify,
-                ignored: ['loader', ...this.config.ignored],
+                ignored: this.config.ignored,
 
-                java: true,
-
+                java: this.config.java,
                 memory: {
                     min: `${ram.ramMin * 1024}M`,
                     max: `${ram.ramMax * 1024}M`
@@ -217,6 +304,7 @@ class Home {
     }
 
     initBtn() {
+        let settings_url = pkg.user ? `${pkg.settings}/${pkg.user}` : pkg.settings
         document.querySelector('.settings-btn').addEventListener('click', () => {
             changePanel('settings');
         });
@@ -231,4 +319,5 @@ class Home {
         return { year: year, month: allMonth[month - 1], day: day }
     }
 }
+
 export default Home;

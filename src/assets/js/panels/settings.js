@@ -217,7 +217,7 @@ class Settings {
     initTab() {
         let TabBtn = document.querySelectorAll('.tab-btn');
         let TabContent = document.querySelectorAll('.tabs-settings-content');
-
+    
         for (let i = 0; i < TabBtn.length; i++) {
             TabBtn[i].addEventListener('click', () => {
                 if (TabBtn[i].classList.contains('save-tabs-btn')) return
@@ -229,10 +229,12 @@ class Settings {
                 TabBtn[i].classList.add('active-tab-btn');
             });
         }
-
+    
         document.querySelector('.save-tabs-btn').addEventListener('click', () => {
             document.querySelector('.default-tab-btn').click();
             changePanel("home");
+            // Ajout de la logique pour recharger le launcher ici
+            location.reload();
         })
     }
 

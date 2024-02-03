@@ -7,8 +7,10 @@
 
 // libs 
 const fs = require('fs');
-const { Microsoft, Mojang } = require('minecraft-java-core');
+const { Microsoft, Mojang, AZauth } = require('minecraft-java-core');
+const pkg = require('../package.json');
 const { ipcRenderer } = require('electron');
+const DiscordRPC = require('discord-rpc');
 
 import { config, logger, changePanel, database, addAccount, accountSelect } from './utils.js';
 import Login from './panels/login.js';
@@ -25,7 +27,9 @@ class Launcher {
         this.database = await new database().init();
         this.createPanels(Login, Home, Settings);
         this.getaccounts();
+        this.initDiscordRPC();
     }
+    
 
     initLog() {
         document.addEventListener("keydown", (e) => {
@@ -35,6 +39,31 @@ class Launcher {
         })
         new logger('Launcher', '#7289da')
     }
+    
+    initDiscordRPC() {
+        if (this.config.rpc_activation === true) {
+        const rpc = new DiscordRPC.Client({ transport: 'ipc' });
+        rpc.on('ready', () => {
+            const presence = {
+                details: this.config.rpc_details,
+                state: this.config.rpc_state,
+                
+                largeImageKey: 'pain',
+                largeImageText: this.config.rpc_large_text,
+                smallImageKey: 'small',
+                smallImageText: this.config.rpc_small_text,
+
+                buttons: [
+                    { label: this.config.rpc_button1, url: this.config.rpc_button1_url },
+                    { label: this.config.rpc_button2, url: this.config.rpc_button2_url }
+                ]
+            };
+            rpc.setActivity(presence);
+        });
+        rpc.login({ clientId: this.config.rpc_id }).catch(console.error);
+    }
+}
+
 
     initFrame() {
         console.log("Initializing Frame...")
@@ -73,6 +102,8 @@ class Launcher {
     }
 
     async getaccounts() {
+        let azauth = this.config.azauth
+        const AZAuth = new AZauth(azauth);
         let accounts = await this.database.getAll('accounts');
         let selectaccount = (await this.database.get('1234', 'accounts-selected'))?.value?.selected;
 
@@ -81,55 +112,9 @@ class Launcher {
         } else {
             for (let account of accounts) {
                 account = account.value;
-                if (account.meta.type === 'Xbox') {
-                    console.log(`Initializing Xbox account ${account.name}...`);
-                    let refresh = await new Microsoft(this.config.client_id).refresh(account);
-                    let refresh_accounts;
-                    let refresh_profile;
-
-                    if (refresh.error) {
-                        this.database.delete(account.uuid, 'accounts');
-                        this.database.delete(account.uuid, 'profile');
-                        if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
-                        console.error(`[Account] ${account.uuid}: ${refresh.errorMessage}`);
-                        continue;
-                    }
-
-                    refresh_accounts = {
-                        access_token: refresh.access_token,
-                        client_token: refresh.client_token,
-                        uuid: refresh.uuid,
-                        name: refresh.name,
-                        refresh_token: refresh.refresh_token,
-                        user_properties: refresh.user_properties,
-                        meta: refresh.meta
-                    }
-
-                    refresh_profile = {
-                        uuid: refresh.uuid
-                    }
-
-                    this.database.update(refresh_accounts, 'accounts');
-                    this.database.update(refresh_profile, 'profile');
-                    addAccount(refresh_accounts);
-                    if (account.uuid === selectaccount) accountSelect(refresh.uuid)
-                } else if (account.meta.type === 'Mojang') {
-                    if (account.meta.offline) {
-                    console.log(`Initializing Crack account ${account.name}...`);
-                        addAccount(account);
-                        if (account.uuid === selectaccount) accountSelect(account.uuid)
-                        continue;
-                    }
-
-                    let validate = await Mojang.validate(account);
-                    if (!validate) {
-                        this.database.delete(account.uuid, 'accounts');
-                        if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
-                        console.error(`[Account] ${account.uuid}: Token is invalid.`);
-                        continue;
-                    }
-
-                    let refresh = await Mojang.refresh(account);
+                if (account.meta.type === 'AZauth') {
+                    let refresh = await AZAuth.verify(account);
+                    console.log(refresh);
                     console.log(`Initializing Mojang account ${account.name}...`);
                     let refresh_accounts;
 
@@ -142,14 +127,18 @@ class Launcher {
 
                     refresh_accounts = {
                         access_token: refresh.access_token,
-                        client_token: refresh.client_token,
+                        client_token: refresh.uuid,
                         uuid: refresh.uuid,
                         name: refresh.name,
                         user_properties: refresh.user_properties,
                         meta: {
                             type: refresh.meta.type,
                             offline: refresh.meta.offline
-                        }
+                        },
+                        user_info: {
+                            role: refresh.user_info.role,
+                            monnaie: refresh.user_info.money,
+                        },
                     }
 
                     this.database.update(refresh_accounts, 'accounts');
@@ -160,11 +149,6 @@ class Launcher {
                     if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
                 }
             }
-
-
-
-
-            
             if (!(await this.database.get('1234', 'accounts-selected')).value.selected) {
                 let uuid = (await this.database.getAll('accounts'))[0]?.value?.uuid
                 if (uuid) {
@@ -182,6 +166,8 @@ class Launcher {
         }
         document.querySelector(".preload-content").style.display = "none";
     }
+    
 }
-
 new Launcher().init();
+
+

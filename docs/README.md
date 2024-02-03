@@ -1,72 +1,34 @@
-<p align="center"><img src="../src/assets/images/icon.png" width="65%" height="65%" alt="icon-launcher"></p>
+CentralCorp Launcher
 
-<h1 align="center">CapMine Launcher</h1>
+## Description
+Un launcher entièrement synchronisé avec votre site Azuriom et entièrement personnalisable depuis un panel.
 
-[<p align="center">
-<img src="https://img.shields.io/badge/build-bêta-orange.svg?style=social&logo=appveyor" alt="build">](https://github.com/luuxis/Selvania-Launcher/releases) 
-[<img src="https://img.shields.io/badge/version-V3.0.0--pre.1-orange.svg?style=social&logo=appveyor" alt="downloads">](https://github.com/luuxis/Selvania-Launcher/releases) 
-[<img src="https://img.shields.io/badge/plateforme-win,%20mac,%20linux-blue.svg?style=social&logo=appveyor" alt="stark">](https://github.com/luuxis/Selvania-Launcher/releases)
-<img src="https://img.shields.io/github/languages/code-size/luuxis/Selvania-Launcher?style=social&logo=appveyor" alt="size">
-</p>
+## Configuration du Launcher
 
+### Étape 1: Cloner le Projet
+- Commencez par forker ce projet en cliquant sur le bouton "Fork" en haut à droite de cette page.
+- Clonez le projet vers votre ordinateur en utilisant Git ou GitHub Desktop.
 
----
+### Étape 2: Hébergement du Panel
+- Téléchargez le code source du panel à partir du dépôt [CentralCorp-Panel](https://github.com/Riptiaz/CentralCorp-Panel) et hébergez-le sur un serveur web PHP.
+- Assurez-vous d'avoir une base de données vierge prête à être utilisée.
 
-**Cloner et installer les dépendances**
+### Étape 3: Configuration du Launcher
+- Ouvrez le fichier `package.json` du launcher que vous avez cloné.
+- Modifiez les champs suivants selon vos besoins :
+    - `name`: Nom de votre launcher
+    - `description`: Description du launcher
+    - `settings`: URL de votre panel
 
-```console
-> git clone https://github.com/luuxis/CapMineLauncher.git
-> cd CapMineLauncher
-(si linux) > sudo apt install -y libatomic1
-> npm install
-```
----
+### Étape 4: Accès au Panel
+- Accédez au panel depuis l'URL que vous avez renseignée précédemment.
+- Les informations de connexion à votre base de données vous seront demandées. Renseignez-les.
+- Créez un compte pour accéder au launcher. Notez qu'il n'est possible de créer qu'un seul compte.
+- Une fois connecté, vous aurez accès au panel où vous pourrez personnaliser différentes options.
 
-**Lancer l'application**
+### Personnalisation
+- Vous pouvez personnaliser divers aspects du launcher selon vos besoins.
+- Assurez-vous de renseigner les URL de votre site Azuriom et de votre serveur FTP dans le panel.
 
-```console
-> npm start
-```
----
-
-**Création du build**
-
-| Platform    | Command              |
-| ----------- | -------------------- |
-| Windows  | `npm run build:win`   |
-| macOS    | `npm run build:mac`   |
-| Linux    | `npm run build:linux` |
-| All    | `npm run build:all` |
-
----
-
-**<p align="center">Fonctionnalité du launcher.</p>**
-
-- Mise à jour automatique.
-
-- Maintenance launcher.
-
-- Maintenance message custom.
-
-- Statut serveur complet.
-
-- Authentification mojang.
-
-- Authentification Microsoft.
-
-- Authentification crack.
-
-- Accepte toutes versions de Minecraft 1.0 > 1.18.x (Forge, Fabric etc).
-
----
-**<p align="center">Configurer votre launcher.</p>**
-
-- [Doc ici](./wiki.md).
-
----
-
-**conditions d'utilisation**
-- Pour utiliser le code vous devez faire un fork du projet
-- Pour utiliser le code votre code doit tout le temps être public
---> Le code à été repris de Luuxis / Selvania Launcher
-
+## Besoin d'Aide ?
+Si vous avez besoin d'assistance ou des questions, n'hésitez pas à nous rejoindre sur notre [Discord](https://discord.gg/VCmNXHvf77). Nous serons ravis de vous aider !

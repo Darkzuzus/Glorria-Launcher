@@ -5,6 +5,7 @@
 
 'use strict';
 
+
 class Slider {
     constructor(id, minValue, maxValue) {
         this.startX = 0;

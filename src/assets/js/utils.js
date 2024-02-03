@@ -7,6 +7,8 @@ import config from './utils/config.js';
 import database from './utils/database.js';
 import logger from './utils/logger.js';
 import slider from './utils/slider.js';
+const pkg = require('../package.json');
+
 
 export {
     config as config,
@@ -26,11 +28,12 @@ function changePanel(id) {
 }
 
 function addAccount(data) {
+    let azauth = config.config.azauth;
     let div = document.createElement("div");
     div.classList.add("account");
     div.id = data.uuid;
     div.innerHTML = `
-        <img class="account-image" src="https://minotar.net/helm/${data.name}/100">
+        <img class="account-image" src="${azauth}/api/skin-api/avatars/face/${data.name}/">
         <div class="account-name">${data.name}</div>
         <div class="account-uuid">${data.uuid}</div>
         <div class="account-delete"><div class="icon-account-delete icon-account-delete-btn"></div></div>
@@ -49,5 +52,6 @@ function accountSelect(uuid) {
 }
 
 function headplayer(pseudo) {
-    document.querySelector(".player-head").style.backgroundImage = `url(https://minotar.net/helm/${pseudo}/100)`;
+    let azauth = config.config.azauth;
+    document.querySelector(".player-head").style.backgroundImage = `url(${azauth}/api/skin-api/avatars/face/${pseudo}/)`;
 }
