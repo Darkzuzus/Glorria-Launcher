@@ -216,6 +216,7 @@ class Login {
             mailInput.disabled = true;
             passwordInput.disabled = true;
             infoLogin.innerHTML = "Connexion en cours...";
+            location.reload()
 
 
             if (mailInput.value == "") {
@@ -292,6 +293,7 @@ class Login {
                 addAccount(account)
                 accountSelect(account.uuid)
                 changePanel("home");
+                location.reload()
 
                 cancelMojangBtn.disabled = false;
                 cancelMojangBtn.click();
