@@ -1,13 +1,13 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "1.0.8",
+    "version": "2.0.1",
     "description": "Launcher de Glorria PVP/Faction modde",
     "main": "src/app.js",
     "author": "Luuxis/Riptiaz/Darkzuzu",
     "settings": "https://glorria.athena-h.fr/CentralCorp-Panel-main/",
     "engines": {
-        "node": "16.x.x"
+        "node": "18.x.x"
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
@@ -34,6 +34,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Riptiaz/CentralCorpr.git"
+        "url": "git+https://github.com/Darkzuzus/Glorria-Launcher.git"
     }
 }

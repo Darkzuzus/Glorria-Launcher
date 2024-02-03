@@ -1,5 +1,5 @@
 # module du helios launcher
-name: Launher Build
+name: Launcher Build
 on:
   push:
     branches: [ master ]
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Set up Python
         uses: actions/setup-python@v2
