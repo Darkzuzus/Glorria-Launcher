@@ -327,15 +327,6 @@
     background: none;
 }
 
-.server {
-    position: relative;
-    width: 100%;
-    height: 75px;
-    background-color: #292929;
-    border-radius: 10px;
-    transition: opacity 1s;
-    opacity: .8;
-}
 
 .changelog {
     position: relative;
@@ -363,10 +354,21 @@
     border-radius: 0px 0px 10px 10px;
     transition: color .2s;
 }
-
+.server {
+    position: relative;
+    width: 100%;
+    height: 75px;
+    background-color: #292929;
+    border-radius: 10px;
+    transition: opacity 1s;
+    opacity: 1;
+}
 .server:hover {
     transition: opacity 1s;
     opacity: 1;
+    cursor: pointer;
+    background-color: #353535;
+    transition-duration: 0.5s;
 }
 
 .server-img {

@@ -30,6 +30,7 @@ class Login {
         document.querySelector('.cancel-login').addEventListener("click", () => {
             document.querySelector(".cancel-login").style.display = "none";
             changePanel("settings");
+            location.reload()
         })
     }
 
@@ -200,6 +201,7 @@ class Login {
                 passwordInput.disabled = false;
                 loginBtn.style.display = "block";
                 infoLogin.innerHTML = "&nbsp;";
+                location.reload()
             })
 
             
@@ -299,6 +301,7 @@ class Login {
                 passwordInput.disabled = false;
                 loginBtn.style.display = "block";
                 infoLogin.innerHTML = "&nbsp;";
+                location.reload()
             }).catch(err => {
                 console.log(err);
                 cancelMojangBtn.disabled = false;
@@ -392,6 +395,7 @@ class Login {
                 passwordInput.disabled = false;
                 infoLogin.innerHTML = 'Adresse E-mail ou mot de passe invalide'
             })
+        
         })
     }
     
