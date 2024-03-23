@@ -5,7 +5,7 @@
     "description": "Launcher de Glorria PVP/Faction modde",
     "main": "src/app.js",
     "author": "Luuxis/Riptiaz/Darkzuzu",
-    "settings": "https://glorria.athena-h.fr/CentralCorp-Panel-main/",
+    "settings": "https://glorria-mc.fr/CentralCorp-Panel-main/",
     "engines": {
         "node": "18.x.x"
     },
