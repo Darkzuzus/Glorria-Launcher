@@ -87,4 +87,5 @@ autoUpdater.on('update-downloaded', () => {
 autoUpdater.on('download-progress', (progress) => {
     const updateWindow = UpdateWindow.getWindow();
     if (updateWindow) updateWindow.webContents.send('download-progress', progress);
+    
 })

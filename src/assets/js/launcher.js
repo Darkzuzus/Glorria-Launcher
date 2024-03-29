@@ -167,7 +167,9 @@ class Launcher {
         document.querySelector(".preload-content").style.display = "none";
     }
     
+    
 }
+
 new Launcher().init();
 
 
