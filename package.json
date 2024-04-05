@@ -19,6 +19,7 @@
         "ext": "js,html,css"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.11.3",
         "discord-rpc": "^4.0.1",
         "electron-updater": "^6.1.4",
         "https": "^1.0.0",

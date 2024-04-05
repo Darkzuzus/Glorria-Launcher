@@ -46,7 +46,32 @@
     opacity: 80;
     transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
 }
-
+.boutique-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    text-align: center;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: linear-gradient(to right, #02520d, #02520d);;
+    opacity: 80;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+.boutique-btn:hover {
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+.boutique-btn {
+    position: absolute;
+    top: 10px;
+    right: 150px;
+    text-align: center;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
 .settings-btn:hover {
     border-radius: 5px;
     transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
@@ -464,11 +489,253 @@
     background-color: #c70707;
 }
 
-.venstone-logo-home {
+.Glorria-logo-home {
     transition-duration: 0.5s;
 }
 
-.venstone-logo-home:hover {
+.Glorria-logo-home:hover {
     filter: drop-shadow(0 0 2rem #055321);
     transition-duration: 0.5s;
+}
+.player-roles,
+.player-monnaies {
+    font: normal normal bold 24px/35px Poppins;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 29ch;
+    pointer-events: none;
+    color: #E1E1E1;
+    margin: auto 15px; /* Ajouter une marge pour l'espacement entre les éléments */
+}
+
+/* Styles pour les écrans plus larges */
+@media (min-width: 768px) {
+    .player-roles {
+        left: 100px; /* Positionner le texte du rôle à 100px à gauche après le "skin" */
+        float: left; /* Aligner le texte du rôle à gauche après le "skin" */
+        max-width: none; /* Supprimer la limite de largeur pour le texte du rôle */
+    }
+
+    .player-monnaies {
+        left: 100px; /* Positionner le texte des points à 100px à gauche après le "skin" */
+        float: left; /* Aligner le texte des points à gauche après le "skin" */
+        max-width: none; /* Supprimer la limite de largeur pour le texte des points */
+    }
+}
+
+/* Styles pour les écrans plus petits */
+@media (max-width: 767px) {
+    .player-roles,
+    .player-monnaies {
+        left: 0; /* Réinitialiser la position à gauche pour les écrans plus petits */
+        float: none; /* Réinitialiser le flottement pour les écrans plus petits */
+        text-align: left; /* Aligner le texte à gauche sur les écrans plus petits */
+        max-width: 100%; /* Permettre aux textes de prendre toute la largeur sur les écrans plus petits */
+        margin: 5px 0; /* Ajouter un espacement de 10px au-dessus et en dessous des textes pour la lisibilité */
+    }
+}
+.play-btns {
+    top: 10px;
+    width: 160px;
+    height: 43px;
+    border-radius: 8px;
+    border: none;
+    background: #085711;
+    font: normal normal bold 20px/25px Poppins;
+    color: #e4e4e4;
+    margin: 15px 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.play-btns:hover {
+    background-color: #053d0d;
+    transition-duration: 0.4s;
+}
+.player-heads {
+    margin: auto 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+
+.player-heads:hover {
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+.home-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    text-align: center;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: linear-gradient(to right, #02520d, #02520d);;
+    opacity: 80;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+
+.home-btn:hover {
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+
+
+.admin-btn,
+.home-btn {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    text-align: center;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+}
+
+/* Hover styles for .admin-btn */
+.admin-btn:hover,
+.home-btn:hover {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .admin-btn {
+        right: 100px;
+    }
+    .home-btn {
+        right: 30px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .admin-btn,
+    .home-btn {
+        position: static;
+        width: 160px;
+        margin: 15px auto;
+        border-radius: 20px;
+    }
+}
+
+
+
+
+.home-btn:hover {
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(1, 0.46, 0, 1.29);
+    cursor: pointer;
+}
+.servers {
+    position: relative;
+    width: 100%;
+    height: 75px;
+    background-color: #292929;
+    border-radius: 10px;
+    transition: opacity 1s;
+    opacity: 1;
+}
+.servers:hover {
+    transition: opacity 1s;
+    opacity: 1;
+    cursor: pointer;
+    background-color: #353535;
+    transition-duration: 0.5s;
+}
+
+
+
+.boxs {
+    position: relative;
+    width: 100%;
+    height: 75px;
+    background-color: #292929;
+    border-radius: 10px;
+    transition: opacity 1s;
+    opacity: 1;
+    margin-top: 8px;
+    transition-duration: 0.5s;
+}
+
+.boxs:hover {
+    transition: opacity 1s;
+    opacity: 1;
+    cursor: pointer;
+    background-color: #353535;
+    transition-duration: 0.5s;
+}
+
+.names {
+    position: absolute;
+    font: normal normal bold 17px/25px Poppins;
+    color: #E1E1E1;
+    top: 17px;
+    left: 70px;
+    transition: color .2s;
+}
+
+.descs {
+    position: absolute;
+    font: normal normal normal 11px/17px Poppins;
+    color: #E1E1E1;
+    transition: all .2s;
+    top: 40px;
+    left: 70px;
+    transition: color .2s;
+}
+
+.greens {
+    color: #1AC707;
+}
+
+.reds {
+    color: #c70707;
+}
+
+.etat-texts {
+    position: absolute;
+    top: 20px;
+    right: 14px;
+    width: 49px;
+    height: 33px;
+    background-color: #262626;
+    border-radius: 4px;
+    transition: background-color .2s;
+}
+
+.texts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: normal normal bold 13px/15px Poppins;
+    letter-spacing: 0px;
+    color: #E1E1E1;
+    transition: color .2s;
+}
+
+.onlines {
+    position: absolute;
+    top: -6px;
+    left: 41px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    border: 2px solid #1A1A1A;
+    transition: all .2s;
+    background-color: #1AC707;
+}
+
+.online.offs {
+    background-color: #c70707;
 }

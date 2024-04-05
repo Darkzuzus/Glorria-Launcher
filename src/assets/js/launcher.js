@@ -16,6 +16,8 @@ import { config, logger, changePanel, database, addAccount, accountSelect } from
 import Login from './panels/login.js';
 import Home from './panels/home.js';
 import Settings from './panels/settings.js';
+import Boutique from './panels/boutique.js';
+
 
 class Launcher {
     async init() {
@@ -25,12 +27,11 @@ class Launcher {
         this.config = await config.GetConfig().then(res => res);
         this.news = await config.GetNews().then(res => res);
         this.database = await new database().init();
-        this.createPanels(Login, Home, Settings);
+        this.createPanels(Login, Home, Settings, Boutique);
         this.getaccounts();
         this.initDiscordRPC();
     }
     
-
     initLog() {
         document.addEventListener("keydown", (e) => {
             if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
@@ -39,6 +40,7 @@ class Launcher {
         })
         new logger('Launcher', '#7289da')
     }
+
     
     initDiscordRPC() {
         if (this.config.rpc_activation === true) {
