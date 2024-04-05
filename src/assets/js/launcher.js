@@ -21,8 +21,8 @@ import Boutique from './panels/boutique.js';
 
 class Launcher {
     async init() {
-        this.initLog();
-        console.log("Initializing Launcher...");
+        //this.initLog();
+        //console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
         this.news = await config.GetNews().then(res => res);
@@ -32,14 +32,14 @@ class Launcher {
         this.initDiscordRPC();
     }
     
-    initLog() {
-        document.addEventListener("keydown", (e) => {
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
-                ipcRenderer.send("main-window-dev-tools");
-            }
-        })
-        new logger('Launcher', '#7289da')
-    }
+    //initLog() {
+        //document.addEventListener("keydown", (e) => {
+            //if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
+                //ipcRenderer.send("main-window-dev-tools");
+            //}
+        //})
+        //new logger('Launcher', '#7289da')
+    //}
 
     
     initDiscordRPC() {
