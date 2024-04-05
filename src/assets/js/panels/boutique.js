@@ -86,7 +86,7 @@ class Boutique {
     }
 
     async initLaunch() {
-        document.querySelector('.play-btn').addEventListener('click', async () => {
+        document.querySelector('.play-btns').addEventListener('click', async () => {
             let urlpkg = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url;
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
@@ -97,9 +97,9 @@ class Boutique {
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
             let screen;
 
-            let playBtn = document.querySelector('.play-btn');
-            let info = document.querySelector(".text-download")
-            let progressBar = document.querySelector(".progress-bar")
+            let playBtn = document.querySelector('.play-btns');
+            let info = document.querySelector(".text-downloads")
+            let progressBar = document.querySelector(".progress-bars")
 
             if (Resolution.screen.width == '<auto>') {
                 screen = false
@@ -143,7 +143,7 @@ class Boutique {
 
             launch.on('progress', (progress, size) => {
                 progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
+                document.querySelector(".text-downloads").innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
                 ipcRenderer.send('main-window-progress', { progress, size })
                 progressBar.value = progress;
                 progressBar.max = size;
@@ -151,7 +151,7 @@ class Boutique {
 
             launch.on('check', (progress, size) => {
                 progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
+                document.querySelector(".text-downloads").innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
                 progressBar.value = progress;
                 progressBar.max = size;
             });
