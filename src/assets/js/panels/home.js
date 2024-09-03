@@ -308,10 +308,6 @@ class Home {
         document.querySelector('.settings-btn').addEventListener('click', () => {
             changePanel('settings');
         });
-        let boutique_url = pkg.user ? `${pkg.boutique}/${pkg.user}` : pkg.boutique
-        document.querySelector('.boutique-btn').addEventListener('click', () => {
-            changePanel('boutique');
-        });
     }
 
     async getdate(e) {
