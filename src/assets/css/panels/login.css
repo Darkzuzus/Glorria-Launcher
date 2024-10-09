@@ -18,12 +18,13 @@
 }
 
 .login-type-btn {
-    border-radius: 15px;
-    border: none;
-    margin: 2% 0;
+    border-radius: 8px;
+    margin: 15px 0;
+    background: #025811; /* Intérieur vert */
+    border: 2px solid #ffffff; /* Bord blanc */
     height: 2em;
-    background-color: #006e21;
-    box-shadow: 0 0 5px #006e21;
+    background-color: #085711;
+    box-shadow: 0 0 5px #085711;
     color: #121212;
     font: normal normal bold 19px/29px Poppins;
     cursor: pointer;
@@ -36,14 +37,14 @@
 }
 
 .login-type-btn:disabled {
-    background-color: #08491b;
-    box-shadow: 0 0 5px #033111;
+    background-color: #085711;
+    box-shadow: 0 0 5px #085711;
     cursor: default;
 }
 
 .login-type-btn:disabled:hover {
-    background-color: #006e21;
-    box-shadow: 0 0 5px #006e21;
+    background-color: #085711;
+    box-shadow: 0 0 5px #085711;
 }
 
 .microsoft {
@@ -99,8 +100,8 @@
     border: none;
     margin: 2% 0;
     height: 2em;
-    background-color: #00bd7a;
-    box-shadow: 0 0 5px #00bd7a;
+    background-color: #085711;
+    box-shadow: 0 0 5px #085711;
     color: #121212;
     font: normal normal bold 19px/29px Poppins;
     cursor: pointer;
@@ -144,8 +145,8 @@
     border: none;
     margin: 2% 0;
     height: 2em;
-    background-color: #006e21;
-    box-shadow: 0 0 5px #006e21;
+    background-color: #085711;
+    box-shadow: 0 0 5px #085711;
     color: #121212;
     font: normal normal bold 19px/29px Poppins;
     cursor: pointer;
@@ -171,5 +172,28 @@
     cursor: pointer;
 }
 .cancel-2f:hover {
+    color: #373737;
+}
+.email-verify-card {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    background: #121212;
+    padding: 20px;
+    font: normal normal bold 19px/29px Poppins;
+    color: #E1E1E1;
+    border-radius: 15px;
+    text-align: center;
+}
+.cancel-email {
+    border: none;
+    background-color: #ffffff00;
+    color: #F1F1F1;
+    font: normal normal bold 19px/29px Poppins;
+    cursor: pointer;
+}
+.cancel-email:hover {
     color: #373737;
 } 

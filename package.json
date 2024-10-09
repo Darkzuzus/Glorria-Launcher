@@ -1,11 +1,11 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "3.0.0",
-    "description": "Launcher de Glorria PVP/Faction modde",
+    "version": "3.1.0",
+    "description": "Launcher de Glorria Royaume Compétitif modde",
     "main": "src/app.js",
     "author": "Luuxis/Riptiaz/Darkzuzu",
-    "settings": "https://glorria-mc.fr/CentralCorp-Panel-main/",
+    "settings": "https://glorria.free.hwhost.fr/CentralCorp-Panel-main/",
     "engines": {
         "node": "18.x.x"
     },

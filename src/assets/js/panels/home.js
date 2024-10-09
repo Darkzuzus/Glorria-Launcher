@@ -7,8 +7,8 @@
 
 import { logger, database, changePanel} from '../utils.js';
 
-const { Launch, Status } = require('minecraft-java-core');
-const { ipcRenderer } = require('electron');
+const { Launch, Status } = require('minecraft-java-core-azbetter');
+const { ipcRenderer, shell } = require('electron');
 const launch = new Launch();
 const pkg = require('../package.json');
 
@@ -24,7 +24,8 @@ class Home {
         this.initLaunch();
         this.initStatusServer();
         this.initBtn();
-        this.bkgrole();
+        this.initVideo();
+        this.initAdvert();
     }
 
     async initNews() {
@@ -85,94 +86,8 @@ class Home {
                 </div>`
             // news.appendChild(blockNews);
         }
-        let title_changelog = document.createElement("div");
-        title_changelog.innerHTML = `
-        <div>${this.config.changelog_version}</div>
-        `
-        document.querySelector('.title-change').appendChild(title_changelog);
-        if(!this.config.changelog_version) {
-            document.querySelector(".title-change").style.display = "none";
-        }
-
-        let bbWrapperChange = document.createElement("div");
-        bbWrapperChange.innerHTML = `
-        <div>${this.config.changelog_new}</div>
-        `
-        document.querySelector('.bbWrapperChange').appendChild(bbWrapperChange);
-        if(!this.config.changelog_new) {
-            document.querySelector(".bbWrapperChange").style.display = "none";
-        }
-        let serverimg = document.querySelector('.server-img')
-        serverimg.setAttribute("src", `${this.config.server_img}`)
-        if(!this.config.server_img) {
-            serverimg.style.display = "none";
-        }
     }
     
-    async bkgrole () {
-        let uuid = (await this.database.get('1234', 'accounts-selected')).value;
-        let account = (await this.database.get(uuid.selected, 'accounts')).value;
-        
-        let blockRole = document.createElement("div");
-        if (this.config.role === true && account.user_info.role) {
-
-        blockRole.innerHTML = `
-        <div>Grade: ${account.user_info.role.name}</div>
-        `
-        document.querySelector('.player-role').appendChild(blockRole);
-        }
-        if(!account.user_info.role) {
-            document.querySelector(".player-role").style.display = "none";
-        }
-
-
-        let blockMonnaie = document.createElement("div");
-        if (this.config.money === true) {
-        blockMonnaie.innerHTML = `
-        <div>${account.user_info.monnaie} Crédits</div>
-        `
-        document.querySelector('.player-monnaie').appendChild(blockMonnaie);
-        }
-        if(account.user_info.monnaie === "undefined") {
-            document.querySelector(".player-monnaie").style.display = "none";
-        }
-        if (this.config.whitelist_activate === true) {
-        if (!this.config.whitelist.includes(account.name)) {
-            document.querySelector(".play-btn").style.backgroundColor = "#696969"; // Couleur de fond grise
-            document.querySelector(".play-btn").style.pointerEvents = "none"; // Désactiver les événements de souris
-            document.querySelector(".play-btn").style.boxShadow = "none";
-            document.querySelector(".play-btn").textContent = "Indisponible";        
-        }
-    }
-        
-        if (account.user_info.role.name === this.config.role_data.role1.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role1.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role2.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role2.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role3.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role3.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role4.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role4.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role5.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role5.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role6.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role6.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role7.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role7.background}) black no-repeat center center scroll`;
-        }
-        if (account.user_info.role.name === this.config.role_data.role8.name) {
-            document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role8.background}) black no-repeat center center scroll`;
-        }
-        
-       
-    }
-
     async initLaunch() {
         document.querySelector('.play-btn').addEventListener('click', async () => {
             let urlpkg = pkg.user ? `${pkg.url}/${pkg.user}` : pkg.url;
@@ -302,7 +217,61 @@ class Home {
             serverMs.innerHTML = `<span class="red">Hors ligne</span>`;
         }
     }
-
+    async initVideo() {
+        const videoContainer = document.querySelector('.ytb');
+        
+        if (!this.config.video_activate) {
+            videoContainer.style.display = 'none';
+            return;
+        }
+    
+        const youtubeVideoId = this.config.video_url;
+        const youtubeThumbnailUrl = `https://img.youtube.com/vi/${youtubeVideoId}/hqdefault.jpg`;
+        const videoThumbnail = videoContainer.querySelector('.youtube-thumbnail');
+        const thumbnailImg = videoThumbnail.querySelector('.thumbnail-img');
+        const playButton = videoThumbnail.querySelector('.ytb-play-btn');
+    
+        const videoCredits = document.querySelector('.video-credits');
+        const btn = videoContainer.querySelector('.ytb-btn');
+    
+        btn.addEventListener('click', () => {
+            shell.openExternal(`https://youtube.com/watch?v=${youtubeVideoId}`);
+        });
+    
+        if (thumbnailImg && playButton) {
+            thumbnailImg.src = youtubeThumbnailUrl;
+    
+            videoThumbnail.addEventListener('click', () => {
+                videoThumbnail.innerHTML = `<iframe width="500" height="290" src="https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
+            });
+        }
+    }
+    async initAdvert() {
+        const advertBanner = document.querySelector('.advert-banner');
+        
+        if (this.config.alert_activate) {
+            let message = this.config.alert_msg;
+    
+            const firstParagraph = message.split('</p>')[0] + '</p>';
+    
+            const scrollingText = document.createElement('div');
+            scrollingText.classList.add('scrolling-text');
+    
+            scrollingText.innerHTML = `${firstParagraph}`;
+    
+            advertBanner.innerHTML = '';
+            advertBanner.appendChild(scrollingText);
+            if (this.config.alert_scroll) {
+                scrollingText.classList.remove('no-scroll');
+            } else {
+                scrollingText.classList.add('no-scroll');
+            }
+    
+            advertBanner.style.display = 'block';
+        } else {
+            advertBanner.style.display = 'none';
+        }
+    }
     initBtn() {
         let settings_url = pkg.user ? `${pkg.settings}/${pkg.user}` : pkg.settings
         document.querySelector('.settings-btn').addEventListener('click', () => {

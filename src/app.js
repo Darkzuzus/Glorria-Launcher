@@ -4,7 +4,7 @@
  */
 
 const { app, ipcMain } = require('electron');
-const { Microsoft } = require('minecraft-java-core');
+const { Microsoft } = require('minecraft-java-core-azbetter');
 const { autoUpdater } = require('electron-updater')
 
 const path = require('path');
@@ -87,5 +87,4 @@ autoUpdater.on('update-downloaded', () => {
 autoUpdater.on('download-progress', (progress) => {
     const updateWindow = UpdateWindow.getWindow();
     if (updateWindow) updateWindow.webContents.send('download-progress', progress);
-    
 })
