@@ -1,13 +1,13 @@
 {
     "name": "Glorria-Launcher",
     "preductname": "Glorria Launcher",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "description": "Launcher de Glorria Royaume Compétitif modde",
     "main": "src/app.js",
     "author": "Luuxis/Riptiaz/Darkzuzu",
     "settings": "https://glorria.free.hwhost.fr/CentralCorp-Panel-main/",
     "engines": {
-        "node": "18.x.x"
+        "node": "16.x.x"
     },
     "scripts": {
         "start": "cross-env-shell NODE_ENV=dev electron .",
@@ -19,11 +19,10 @@
         "ext": "js,html,css"
     },
     "dependencies": {
-        "bootstrap-icons": "^1.11.3",
         "discord-rpc": "^4.0.1",
         "electron-updater": "^6.1.4",
         "https": "^1.0.0",
-        "minecraft-java-core": "^3.6.4",
+        "minecraft-java-core-azbetter": "^3.11.3",
         "node-fetch": "^2.6.7",
         "xml-js": "^1.6.11"
     },
