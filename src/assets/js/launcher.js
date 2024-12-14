@@ -19,7 +19,7 @@ import Settings from './panels/settings.js';
 
 class Launcher {
     async init() {
-        this.initLog();
+//        this.initLog();
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
@@ -31,14 +31,14 @@ class Launcher {
     }
     
 
-    initLog() {
-        document.addEventListener("keydown", (e) => {
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
-                ipcRenderer.send("main-window-dev-tools");
-            }
-        })
-        new logger('Launcher', '#7289da')
-    }
+//    initLog() {
+//        document.addEventListener("keydown", (e) => {
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
+//                ipcRenderer.send("main-window-dev-tools");
+//            }
+//        })
+//        new logger('Launcher', '#7289da')
+//    }
     
     initDiscordRPC() {
         if (this.config.rpc_activation === true) {
@@ -225,56 +225,56 @@ class Launcher {
             if (urlPattern.test(this.config.role_data.role1.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role1.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role2.name) {
             if (urlPattern.test(this.config.role_data.role2.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role2.background}) black no-repeat center center scroll`;
             }else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role3.name) {
             if (urlPattern.test(this.config.role_data.role3.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role3.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role4.name) {
             if (urlPattern.test(this.config.role_data.role4.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role4.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role5.name) {
             if (urlPattern.test(this.config.role_data.role5.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role5.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role6.name) {
             if (urlPattern.test(this.config.role_data.role6.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role6.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role7.name) {
             if (urlPattern.test(this.config.role_data.role7.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role7.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role8.name) {
             if (urlPattern.test(this.config.role_data.role1.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role8.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         } 
     }

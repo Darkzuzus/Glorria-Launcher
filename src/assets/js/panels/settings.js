@@ -109,56 +109,56 @@ class Settings {
             if (urlPattern.test(this.config.role_data.role1.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role1.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role2.name) {
             if (urlPattern.test(this.config.role_data.role2.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role2.background}) black no-repeat center center scroll`;
             }else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role3.name) {
             if (urlPattern.test(this.config.role_data.role3.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role3.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role4.name) {
             if (urlPattern.test(this.config.role_data.role4.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role4.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role5.name) {
             if (urlPattern.test(this.config.role_data.role5.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role5.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role6.name) {
             if (urlPattern.test(this.config.role_data.role6.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role6.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role7.name) {
             if (urlPattern.test(this.config.role_data.role7.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role7.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         if (account.user_info.role.name === this.config.role_data.role8.name) {
             if (urlPattern.test(this.config.role_data.role1.background) === true) {
             document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.config.role_data.role8.background}) black no-repeat center center scroll`;
             } else {
-                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.jpg") black no-repeat center center scroll`;
+                document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../src/assets/images/background/light.png") black no-repeat center center scroll`;
             }
         }
         
@@ -300,10 +300,10 @@ class Settings {
         xhr.open('POST', `${websiteUrl}/api/skin-api/skins/update`, true);
     
         xhr.onload = async () => {
-            console.log(`XHR Response: ${xhr.response}`);  // Log pour la réponse
+            console.log(`XHR Response: ${xhr.response}`);  
             if (xhr.status === 200) {
                 console.log('Skin updated successfully!');
-                await this.initPreviewSkin();  // Appel asynchrone de la méthode
+                await this.initPreviewSkin();  
             } else {
                 console.error(`Failed to update skin. Status code: ${xhr.status}`);
             }
@@ -423,7 +423,11 @@ class Settings {
             document.querySelector('.default-tab-btn').click();
             changePanel("home");
             this.refreshData();
-        })
+                location.reload(); 
+
+            
+        });
+        
     }
 
     async initSettingsDefault() {
