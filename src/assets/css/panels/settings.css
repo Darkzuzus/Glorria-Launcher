@@ -18,8 +18,8 @@ body {
     height: 43px;
     border-radius: 8px;
     margin: 15px 0;
-    background: #025811; /* Intérieur vert */
-    border: 2px solid #ffffff; /* Bord blanc */
+    background: #025811; 
+    border: 2px solid #ffffff; 
     text-align: center;
     cursor: pointer;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
