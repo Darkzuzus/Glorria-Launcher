@@ -19,7 +19,7 @@ import Settings from './panels/settings.js';
 
 class Launcher {
     async init() {
-        this.initLog();
+//        this.initLog();
         console.log("Initializing Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
@@ -31,14 +31,14 @@ class Launcher {
     }
     
 
-    initLog() {
-        document.addEventListener("keydown", (e) => {
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
-                ipcRenderer.send("main-window-dev-tools");
-            }
-        })
-        new logger('Launcher', '#7289da')
-    }
+//    initLog() {
+//        document.addEventListener("keydown", (e) => {
+//            if (e.ctrlKey && e.shiftKey && e.keyCode == 73 || e.keyCode == 123) {
+//                ipcRenderer.send("main-window-dev-tools");
+//            }
+//        })
+//        new logger('Launcher', '#7289da')
+//    }
     
     initDiscordRPC() {
         if (this.config.rpc_activation === true) {
